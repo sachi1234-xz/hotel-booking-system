@@ -1,0 +1,5 @@
+com\hotel\api_gateway\ApiGatewayApplication.class
+com\hotel\api_gateway\config\GatewayConfig.class
+com\hotel\api_gateway\controller\FallbackController.class
+com\hotel\api_gateway\filter\ApiKeyInjectFilter.class
+com\hotel\api_gateway\filter\JwtAuthenticationFilter.class
