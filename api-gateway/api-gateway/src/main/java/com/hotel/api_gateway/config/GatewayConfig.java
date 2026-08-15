@@ -1,7 +1,7 @@
 package com.hotel.api_gateway.config;
 
-import com.hotel.api_gateway.filter.ApiKeyInjectFilter;
-import com.hotel.api_gateway.filter.JwtAuthenticationFilter;
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -11,7 +11,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
+import com.hotel.api_gateway.filter.ApiKeyInjectFilter;
+import com.hotel.api_gateway.filter.JwtAuthenticationFilter;
 
 @Configuration
 public class GatewayConfig {
@@ -67,7 +68,12 @@ public class GatewayConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:4200"));
+        corsConfig.setAllowedOrigins(Arrays.asList(
+            "http://localhost:3000",
+            "http://localhost:4200",
+            "http://127.0.0.1:5500",      // ✅ Live Server URL 1
+            "http://localhost:5500"       // ✅ Live Server URL 2
+        ));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         corsConfig.setAllowedHeaders(Arrays.asList("*"));
         corsConfig.setAllowCredentials(true);
