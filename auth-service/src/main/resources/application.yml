@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+app:
+  jwt:
+    secret: mySuperSecretKeyThatShouldBeAtLeast32CharactersLong
+    expiration: 86400000
+  service:
+    api:
+      key: AUTH_SECRET_12345
+
+logging:
+  level:
+    root: INFO
+    com.hotel.auth: DEBUG
