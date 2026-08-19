@@ -1,16 +1,13 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
+COPY .mvn .mvn
+COPY mvnw mvnw.cmd pom.xml ./
+RUN chmod +x mvnw && ./mvnw -B dependency:go-offline
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN ./mvnw -B -DskipTests package
 
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-ENV SPRING_PROFILES_ACTIVE=postgres
-ENV POSTGRES_URL=jdbc:postgresql://postgres-db:5432/payment_db
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=postgrespassword
 EXPOSE 8084
 ENTRYPOINT ["java", "-jar", "app.jar"]
