@@ -1,13 +1,14 @@
-package com.example.demo;
+package com.hotel.booking;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-class DemoApplicationTests {
+@ActiveProfiles("h2")
+class BookingServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
-
 }
