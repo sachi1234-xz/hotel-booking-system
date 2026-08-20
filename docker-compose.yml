@@ -49,7 +49,7 @@ services:
       POSTGRES_URL: jdbc:postgresql://auth-db:5432/booking_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgrespassword
-      HOTEL_SERVICE_URL: http://host.docker.internal:8082
+      HOTEL_SERVICE_URL: http://hotel-service:8082
       BOOKING_API_KEY: BOOKING_SECRET_11111
       JWT_SECRET: ubqBq8o9co+y1lA+viUYAnWt1toPVlGGbOdQp/tfisjaacx3dPFM6FjXchLfyWQ8
     depends_on:

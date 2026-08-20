@@ -2,6 +2,7 @@ package com.hotel.api_gateway.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -14,7 +15,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 
 @Component
 public class JwtAuthenticationFilter implements GatewayFilter {
@@ -34,12 +34,12 @@ public class JwtAuthenticationFilter implements GatewayFilter {
 
         String authHeader = request.getHeaders().getFirst("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return onError(exchange, "Missing or invalid Authorization header", HttpStatus.UNAUTHORIZED);
+            return chain.filter(exchange);
         }
 
         String token = authHeader.substring(7);
         try {
-            SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+            SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
@@ -47,8 +47,10 @@ public class JwtAuthenticationFilter implements GatewayFilter {
                     .getBody();
 
             String userId = claims.getSubject();
+            long numericUserId = Math.abs((long) userId.hashCode()) % 1000000L;
             ServerHttpRequest mutatedRequest = request.mutate()
-                    .header("X-User-Id", userId)
+                    .header("X-User-Id", String.valueOf(numericUserId))
+                    .header("X-User-Email", userId)
                     .header("X-User-Role", claims.get("role", String.class))
                     .build();
 

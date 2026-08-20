@@ -27,10 +27,18 @@ public class BookingController {
     @Operation(summary = "Create a new booking", description = "Creates a booking after verifying room availability via Hotel Service")
     public ResponseEntity<BookingResponse> createBooking(
             @Valid @RequestBody BookingRequest request,
-            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
-        Long effectiveUserId = userId != null ? userId : 1L;
+            @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        Long effectiveUserId = (userId != null && !userId.isEmpty()) ? Long.parseLong(userId) : 1L;
         BookingResponse response = bookingService.createBooking(request, effectiveUserId);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/my")
+    @Operation(summary = "Get current user's bookings", description = "Returns all bookings for the authenticated user")
+    public ResponseEntity<List<BookingResponse>> getMyBookings(
+            @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        Long effectiveUserId = (userId != null && !userId.isEmpty()) ? Long.parseLong(userId) : 1L;
+        return ResponseEntity.ok(bookingService.getBookingsByUserId(effectiveUserId));
     }
 
     @GetMapping("/{id}")

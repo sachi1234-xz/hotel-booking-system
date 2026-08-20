@@ -25,13 +25,13 @@ export const roomAPI = {
 export const bookingAPI = {
   create: (data) => api.post('/bookings', data),
   getById: (id) => api.get(`/bookings/${id}`),
-  getByUserId: (userId) => api.get(`/bookings/user/${userId}`),
+  getMyBookings: () => api.get('/bookings/my'),
   cancel: (id) => api.delete(`/bookings/${id}`),
 };
 
 export const paymentAPI = {
   process: (data) => api.post('/payments/process', data),
-  getHistory: (userId) => api.get(`/payments/history`, { params: { userId } }),
+  getMyPayments: () => api.get('/payments/my'),
   getById: (id) => api.get(`/payments/${id}`),
   getInvoice: (id) => api.get(`/payments/${id}/invoice`),
 };

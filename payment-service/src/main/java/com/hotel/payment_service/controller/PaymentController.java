@@ -26,9 +26,22 @@ public class PaymentController {
 
     @PostMapping("/process")
     @Operation(summary = "Process a payment", description = "Processes a payment and auto-generates an invoice")
-    public ResponseEntity<PaymentResponse> processPayment(@Valid @RequestBody PaymentRequest request) {
+    public ResponseEntity<PaymentResponse> processPayment(
+            @Valid @RequestBody PaymentRequest request,
+            @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        if (request.getUserId() == null && userId != null && !userId.isEmpty()) {
+            request.setUserId(Long.parseLong(userId));
+        }
         PaymentResponse response = paymentService.processPayment(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/my")
+    @Operation(summary = "Get current user's payment history", description = "Returns all payments for the authenticated user")
+    public ResponseEntity<List<PaymentResponse>> getMyPayments(
+            @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        Long effectiveUserId = (userId != null && !userId.isEmpty()) ? Long.parseLong(userId) : 1L;
+        return ResponseEntity.ok(paymentService.getHistoryForUser(effectiveUserId));
     }
 
     @GetMapping("/history")

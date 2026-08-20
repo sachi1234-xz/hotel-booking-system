@@ -27,13 +27,13 @@ public class ApiKeyInjectFilter implements GatewayFilter {
         String path = exchange.getRequest().getURI().getPath();
         String apiKey = null;
 
-        if (path.startsWith("/api/auth")) {
+        if (path.contains("/auth")) {
             apiKey = authApiKey;
-        } else if (path.startsWith("/api/hotels")) {
+        } else if (path.contains("/hotels") || path.contains("/rooms")) {
             apiKey = hotelApiKey;
-        } else if (path.startsWith("/api/bookings")) {
+        } else if (path.contains("/bookings")) {
             apiKey = bookingApiKey;
-        } else if (path.startsWith("/api/payments")) {
+        } else if (path.contains("/payments")) {
             apiKey = paymentApiKey;
         }
 

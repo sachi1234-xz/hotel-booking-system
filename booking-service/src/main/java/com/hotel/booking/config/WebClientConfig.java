@@ -11,10 +11,14 @@ public class WebClientConfig {
     @Value("${hotel-service.url}")
     private String hotelServiceUrl;
 
+    @Value("${hotel-service.api-key:HOTEL_SECRET_67890}")
+    private String apiKey;
+
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
                 .baseUrl(hotelServiceUrl)
+                .defaultHeader("X-API-KEY", apiKey)
                 .build();
     }
 }

@@ -21,7 +21,7 @@ export default function MyBookings() {
   const fetchBookings = () => {
     if (!user?.email) return;
     setLoading(true);
-    bookingAPI.getByUserId(user.email)
+    bookingAPI.getMyBookings()
       .then((res) => setBookings(res.data))
       .catch(() => setError('Failed to load bookings'))
       .finally(() => setLoading(false));

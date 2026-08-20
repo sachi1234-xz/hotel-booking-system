@@ -6,23 +6,8 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      routes:
-        - id: auth-service
-          uri: http://auth-service:8081
-          predicates:
-            - Path=/api/auth/**
-        - id: hotel-service
-          uri: http://hotel-service:8082
-          predicates:
-            - Path=/api/hotels/**
-        - id: booking-service
-          uri: http://booking-service:8083
-          predicates:
-            - Path=/api/bookings/**
-        - id: payment-service
-          uri: http://payment-service:8084
-          predicates:
-            - Path=/api/payments/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin
 
 management:
   endpoints:

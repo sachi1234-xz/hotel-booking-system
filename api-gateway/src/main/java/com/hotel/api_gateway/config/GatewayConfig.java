@@ -29,39 +29,35 @@ public class GatewayConfig {
                 .route("auth-service", r -> r
                         .path("/api/auth/**")
                         .filters(f -> f
+                                .stripPrefix(1)
                                 .filter(jwtAuthenticationFilter)
-                                .filter(apiKeyInjectFilter)
-                                .circuitBreaker(config -> config
-                                        .setName("authServiceCB")
-                                        .setFallbackUri("forward:/fallback/auth")))
-                        .uri("http://localhost:8081"))
+                                .filter(apiKeyInjectFilter))
+                        .uri("http://auth-service:8081"))
                 .route("hotel-service", r -> r
                         .path("/api/hotels/**")
                         .filters(f -> f
                                 .filter(jwtAuthenticationFilter)
-                                .filter(apiKeyInjectFilter)
-                                .circuitBreaker(config -> config
-                                        .setName("hotelServiceCB")
-                                        .setFallbackUri("forward:/fallback/hotel")))
-                        .uri("http://localhost:8082"))
+                                .filter(apiKeyInjectFilter))
+                        .uri("http://hotel-service:8082"))
+                .route("room-service", r -> r
+                        .path("/api/rooms/**")
+                        .filters(f -> f
+                                .filter(jwtAuthenticationFilter)
+                                .filter(apiKeyInjectFilter))
+                        .uri("http://hotel-service:8082"))
                 .route("booking-service", r -> r
                         .path("/api/bookings/**")
                         .filters(f -> f
+                                .stripPrefix(1)
                                 .filter(jwtAuthenticationFilter)
-                                .filter(apiKeyInjectFilter)
-                                .circuitBreaker(config -> config
-                                        .setName("bookingServiceCB")
-                                        .setFallbackUri("forward:/fallback/booking")))
-                        .uri("http://localhost:8083"))
+                                .filter(apiKeyInjectFilter))
+                        .uri("http://booking-service:8083"))
                 .route("payment-service", r -> r
                         .path("/api/payments/**")
                         .filters(f -> f
                                 .filter(jwtAuthenticationFilter)
-                                .filter(apiKeyInjectFilter)
-                                .circuitBreaker(config -> config
-                                        .setName("paymentServiceCB")
-                                        .setFallbackUri("forward:/fallback/payment")))
-                        .uri("http://localhost:8084"))
+                                .filter(apiKeyInjectFilter))
+                        .uri("http://payment-service:8084"))
                 .build();
     }
 

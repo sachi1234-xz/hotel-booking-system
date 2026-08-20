@@ -22,7 +22,7 @@ export default function MyPayments() {
 
   useEffect(() => {
     if (!user?.email) return;
-    paymentAPI.getHistory(user.email)
+    paymentAPI.getMyPayments()
       .then((res) => setPayments(res.data))
       .catch(() => setError('Failed to load payment history'))
       .finally(() => setLoading(false));
