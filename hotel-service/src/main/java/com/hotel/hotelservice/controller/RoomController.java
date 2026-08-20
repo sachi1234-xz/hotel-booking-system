@@ -39,6 +39,17 @@ public class RoomController {
         return ResponseEntity.ok(roomService.getAvailableRooms());
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a room by ID", description = "Returns a single room with the given id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Room returned successfully"),
+            @ApiResponse(responseCode = "404", description = "No room found with the given id"),
+            @ApiResponse(responseCode = "401", description = "Missing or invalid X-API-KEY header")
+    })
+    public ResponseEntity<Room> getRoomById(@PathVariable Long id) {
+        return ResponseEntity.ok(roomService.getRoomById(id));
+    }
+
     @PutMapping("/{id}")
     @Operation(summary = "Update an existing room", description = "Updates room number, type, price and availability of the room with the given id")
     @ApiResponses({

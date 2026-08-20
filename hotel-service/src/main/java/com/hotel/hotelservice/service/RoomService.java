@@ -9,6 +9,8 @@ public interface RoomService {
 
     Room addRoomToHotel(Long hotelId, Room room);
 
+    Room getRoomById(Long id);
+
     List<Room> getRoomsByHotelId(Long hotelId);
 
     List<Room> getAvailableRooms();

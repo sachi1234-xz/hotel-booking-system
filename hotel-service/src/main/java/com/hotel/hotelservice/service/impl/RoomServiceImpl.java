@@ -72,6 +72,13 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Room getRoomById(Long id) {
+        return roomRepository.findById(id)
+                .orElseThrow(() -> new RoomNotFoundException(id));
+    }
+
+    @Override
     @Transactional
     public void deleteRoom(Long id) {
         if (!roomRepository.existsById(id)) {
