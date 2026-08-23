@@ -27,6 +27,7 @@ export default function Navbar() {
             <div className="hidden md:ml-8 md:flex md:space-x-4">
               <Link to="/hotels" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Hotels</Link>
               {user && <Link to="/dashboard/bookings" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">My Bookings</Link>}
+              {user && <Link to="/dashboard/profile" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Profile</Link>}
               {user?.role === 'ADMIN' && <Link to="/admin" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Admin</Link>}
               <Link to="/about" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</Link>
               <Link to="/contact" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</Link>
@@ -59,6 +60,7 @@ export default function Navbar() {
         <div className="md:hidden border-t bg-white px-4 pt-2 pb-4 space-y-1">
           <Link to="/hotels" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Hotels</Link>
           {user && <Link to="/dashboard/bookings" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">My Bookings</Link>}
+          {user && <Link to="/dashboard/profile" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Profile</Link>}
           {user?.role === 'ADMIN' && <Link to="/admin" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Admin</Link>}
           <Link to="/about" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">About</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contact</Link>

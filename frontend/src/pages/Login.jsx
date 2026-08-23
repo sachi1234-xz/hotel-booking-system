@@ -50,6 +50,9 @@ export default function Login() {
           <p className="text-center mt-6 text-gray-600">
             Don't have an account? <Link to="/register" className="text-indigo-600 font-medium hover:underline">Sign up</Link>
           </p>
+          <p className="text-center mt-2 text-gray-600">
+            <Link to="/reset-password" className="text-sm text-indigo-600 hover:underline">Forgot your password?</Link>
+          </p>
         </div>
       </div>
     </div>
