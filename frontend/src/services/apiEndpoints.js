@@ -4,6 +4,14 @@ export const authAPI = {
   register: (data) => api.post('/auth/register', data),
   login: (data) => api.post('/auth/login', data),
   validate: () => api.get('/auth/validate'),
+  updateProfile: (data) => api.put('/auth/profile', data),
+  changePassword: (data) => api.put('/auth/change-password', data),
+  deleteAccount: () => api.delete('/auth/profile'),
+  getAllUsers: () => api.get('/auth/users'),
+  getUserById: (id) => api.get(`/auth/users/${id}`),
+  requestPasswordReset: (data) => api.post('/auth/password-reset/request', data),
+  verifyEmail: (data) => api.post('/auth/verify-email', data),
+  sendVerificationCode: (email) => api.post(`/auth/verification-code/send?email=${email}`),
 };
 
 export const hotelAPI = {
