@@ -12,7 +12,9 @@ import BookingPage from './pages/BookingPage';
 import PaymentPage from './pages/PaymentPage';
 import MyBookings from './pages/Dashboard/MyBookings';
 import MyPayments from './pages/Dashboard/MyPayments';
+import Profile from './pages/Dashboard/Profile';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import ResetPassword from './pages/ResetPassword';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
@@ -34,6 +36,8 @@ export default function App() {
               <Route path="/payments/:bookingId" element={<ProtectedRoute><PaymentPage /></ProtectedRoute>} />
               <Route path="/dashboard/bookings" element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
               <Route path="/dashboard/payments" element={<ProtectedRoute><MyPayments /></ProtectedRoute>} />
+              <Route path="/dashboard/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />

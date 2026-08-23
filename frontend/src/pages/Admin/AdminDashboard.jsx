@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ManageHotels from './ManageHotels';
 import ManageRooms from './ManageRooms';
+import ManageUsers from './ManageUsers';
 
 const TABS = [
   { key: 'hotels', label: 'Hotels', icon: '🏨' },
   { key: 'rooms', label: 'Rooms', icon: '🛏️' },
+  { key: 'users', label: 'Users', icon: '👥' },
 ];
 
 export default function AdminDashboard() {
@@ -29,6 +31,7 @@ export default function AdminDashboard() {
 
       {tab === 'hotels' && <ManageHotels />}
       {tab === 'rooms' && <ManageRooms />}
+      {tab === 'users' && <ManageUsers />}
     </div>
   );
 }
