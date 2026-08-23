@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  health:
+    redis:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+app:
+  api-key: GATEWAY_SECRET
+  api-keys:
+    auth: AUTH_SECRET_12345
+    hotel: HOTEL_SECRET_67890
+    booking: BOOKING_SECRET_11111
+    payment: PAYMENT_SECRET_22222
+  jwt:
+    secret: ubqBq8o9co+y1lA+viUYAnWt1toPVlGGbOdQp/tfisjaacx3dPFM6FjXchLfyWQ8
