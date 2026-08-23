@@ -39,12 +39,12 @@ public class Hotel {
 
     @NotBlank(message = "Hotel name is required")
     @Column(nullable = false, length = 150)
-    @Schema(description = "Name of the hotel", example = "Grand Plaza Hotel")
+    @Schema(description = "Name of the hotel", example = "Cinnamon Grand Colombo")
     private String name;
 
     @NotBlank(message = "Hotel location is required")
     @Column(nullable = false, length = 200)
-    @Schema(description = "City or address where the hotel is located", example = "New York")
+    @Schema(description = "City or address where the hotel is located", example = "Colombo")
     private String location;
 
     @Column(length = 1000)

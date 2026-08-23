@@ -39,7 +39,7 @@ export default function Register() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-          <p className="text-gray-600 mt-2">Join StayEase today</p>
+          <p className="text-gray-600 mt-2">Join Hotel Horizon today</p>
         </div>
         <div className="bg-white rounded-2xl shadow-lg p-8">
           {error && <Alert type="error" message={error} onClose={() => setError('')} />}

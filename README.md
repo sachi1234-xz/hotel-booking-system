@@ -136,8 +136,8 @@ hotel-booking-system/
 ## Sample Data
 
 The hotel service pre-loads sample data:
-- **Grand Plaza Hotel** (New York) - 3 rooms
-- **Riverside Inn** (Chicago) - 2 rooms
+- **Cinnamon Grand Colombo** (Colombo) - 3 rooms
+- **Earls Regency Kandy** (Kandy) - 2 rooms
 
 ## Group Members
 
