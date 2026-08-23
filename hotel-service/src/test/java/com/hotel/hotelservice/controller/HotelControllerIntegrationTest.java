@@ -52,7 +52,7 @@ class HotelControllerIntegrationTest {
         mockMvc.perform(get("/api/hotels").header("X-API-KEY", VALID_API_KEY))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", greaterThanOrEqualTo(1)))
-                .andExpect(jsonPath("$[*].name", org.hamcrest.Matchers.hasItem("Grand Plaza Hotel")));
+                .andExpect(jsonPath("$[*].name", org.hamcrest.Matchers.hasItem("Cinnamon Grand Colombo")));
     }
 
     @Test
@@ -100,14 +100,14 @@ class HotelControllerIntegrationTest {
     @Test
     void updateHotelReturnsUpdatedHotel() throws Exception {
         String body = """
-                {"name": "Grand Plaza Renamed", "location": "New York", "description": "Updated"}
+                {"name": "Cinnamon Grand Renamed", "location": "Colombo", "description": "Updated"}
                 """;
         mockMvc.perform(put("/api/hotels/1")
                         .header("X-API-KEY", VALID_API_KEY)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name", is("Grand Plaza Renamed")));
+                .andExpect(jsonPath("$.name", is("Cinnamon Grand Renamed")));
     }
 
     @Test

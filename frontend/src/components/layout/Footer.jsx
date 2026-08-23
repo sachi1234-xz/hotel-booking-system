@@ -10,7 +10,7 @@ export default function Footer() {
               <svg className="h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
               </svg>
-              <span className="text-xl font-bold text-white">StayEase</span>
+              <span className="text-xl font-bold text-white">Hotel Horizon</span>
             </div>
             <p className="text-sm">Your trusted hotel booking platform. Find and book the perfect stay for any occasion.</p>
           </div>
@@ -33,15 +33,15 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm">
-              <li>123 Hotel Street</li>
-              <li>New York, NY 10001</li>
-              <li>support@stayease.com</li>
-              <li>+1 (555) 123-4567</li>
+              <li>42 Galle Face Road</li>
+              <li>Colombo 03, Sri Lanka</li>
+              <li>support@hotelhorizon.lk</li>
+              <li>+94 11 234 5678</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} StayEase. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Hotel Horizon. All rights reserved.</p>
         </div>
       </div>
     </footer>

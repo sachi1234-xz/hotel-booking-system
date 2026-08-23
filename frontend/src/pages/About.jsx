@@ -2,19 +2,19 @@ export default function About() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">About StayEase</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">About Hotel Horizon</h1>
         <p className="text-xl text-gray-600">Your trusted partner in finding the perfect stay</p>
       </div>
 
       <div className="prose prose-lg mx-auto text-gray-600 space-y-6">
-        <p>StayEase was founded with a simple mission: make hotel booking effortless. We connect travelers with the best hotels worldwide, offering a seamless booking experience from search to check-out.</p>
+        <p>Hotel Horizon was founded with a simple mission: make hotel booking effortless in Sri Lanka. We connect travelers with the finest hotels across the island, from the cultural heart of Kandy to the sun-kissed beaches of Mirissa, offering a seamless booking experience from search to check-out.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
           {[
-            { icon: '🎯', title: 'Our Mission', desc: 'To provide a seamless, transparent, and enjoyable hotel booking experience for every traveler.' },
-            { icon: '🌍', title: 'Global Reach', desc: 'We partner with hotels across the globe to bring you the best options at competitive prices.' },
+            { icon: '🎯', title: 'Our Mission', desc: 'To provide a seamless, transparent, and enjoyable hotel booking experience for travelers exploring Sri Lanka.' },
+            { icon: '🏝️', title: 'Island-Wide Coverage', desc: 'We partner with hotels across Sri Lanka - from Colombo to Ella, Negombo to Trincomalee - to bring you the best options.' },
             { icon: '💡', title: 'Innovation', desc: 'We leverage modern technology to make your booking experience fast, secure, and intuitive.' },
-            { icon: '🤝', title: 'Customer First', desc: 'Our dedicated support team is always ready to help you with any questions or concerns.' },
+            { icon: '🤝', title: 'Customer First', desc: 'Our dedicated support team in Colombo is always ready to help you with any questions or concerns.' },
           ].map((item, i) => (
             <div key={i} className="bg-gray-50 rounded-2xl p-6">
               <span className="text-3xl">{item.icon}</span>

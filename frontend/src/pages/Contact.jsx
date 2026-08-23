@@ -31,9 +31,9 @@ export default function Contact() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {[
-          { icon: '📧', title: 'Email', detail: 'support@stayease.com' },
-          { icon: '📞', title: 'Phone', detail: '+1 (555) 123-4567' },
-          { icon: '📍', title: 'Address', detail: '123 Hotel Street, NY 10001' },
+          { icon: '📧', title: 'Email', detail: 'support@hotelhorizon.lk' },
+          { icon: '📞', title: 'Phone', detail: '+94 11 234 5678' },
+          { icon: '📍', title: 'Address', detail: '42 Galle Face Road, Colombo 03' },
         ].map((item, i) => (
           <div key={i} className="text-center p-6 bg-gray-50 rounded-2xl">
             <span className="text-3xl">{item.icon}</span>
